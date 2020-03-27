@@ -45,8 +45,11 @@ def test_connection(name, url, timeout=10):
         print("Error open {}: {}, {}, DNS finished in {} sec.".format(name, url, e, dns_elapsed))
         return
     load_elapsed = time.time() - start
-    print("{} sent=1 Timing for {}: {}, DNS: {:.4f} sec, LOAD: {:.4f} sec.".format(time.ctime(),name, url, dns_elapsed, load_elapsed)) 
-    print("{} sent=1 received=1 packet_loss=0 min_ping={:.3f} avg_ping={:.3f} max_ping={:.3f} jitter=0.000 return_code=0 dest={} DNSLoad={:.3f}".format(time.ctime(),load_elapsed,load_elapsed,load_elapsed,url,dns_elapsed))
+# Output Format for Standalone usage
+    print("{} Timing for {}: {}, DNS: {:.4f} sec, LOAD: {:.4f} sec.".format(time.ctime(),name, url, dns_elapsed, load_elapsed)) 
+
+# Output Format to be in sync and work with the out of the box dashboards of the Splunk Network Toolkit Uptime Monitoring Dashboard
+   # print("{} sent=1 received=1 packet_loss=0 min_ping={:.3f} avg_ping={:.3f} max_ping={:.3f} jitter=0.000 return_code=0 dest={} DNSLoad={:.3f}".format(time.ctime(),load_elapsed,load_elapsed,load_elapsed,url,dns_elapsed))
 
 
 if __name__ == '__main__':
