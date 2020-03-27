@@ -33,3 +33,7 @@ The Splunk Universal Forwarder is lightwight and does not come with python. It's
 ## How can I map it into the Network Toolkit Splunk App?
 To align with the PING Logs the webpingi.py file allows you to change the output format. Go into the file before you copy it to the heavy forwarder and swap out the output where it is flagged in the comments. Output will then look like that:
 > Fri Mar 27 17:07:29 2020 sent=1 received=1 packet_loss=0 min_ping=4.683 avg_ping=4.683 max_ping=4.683 jitter=0.000 return_code=0 dest=https://answers.splunk.com DNSLoad=0.027
+
+Dashboard adjustments should be easy with adding the sourcetype early on and splitting by host to display from which host the performance is measured from.
+
+![Status Overview with WebPingi](https://github.com/matthias2maier/webpingi/blob/master/WebPingi%20in%20Network%20Toolkit.png?raw=true)
