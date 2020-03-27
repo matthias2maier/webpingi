@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?><form refresh="30" script="ping_status_overview.js" stylesheet="ping_status_cell_renderer.css,ping_status_overview.css">
+  <label>Status Overview with WebPingi</label>
+  <fieldset autoRun="true">
+    <input type="time" searchWhenChanged="true">
+      <default>Last 24 hours</default>
+    </input>
+    <input type="dropdown" token="dest">
+      <label>Dest</label>
+      <choice value="*">All</choice>
+      <initialValue>*</initialValue>
+      <fieldForLabel>dest</fieldForLabel>
+      <fieldForValue>dest</fieldForValue>
+      <search>
+        <query>sourcetype="ping_input" OR sourcetype=webpingi | stats count by dest | sort count</query>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </search>
+    </input>
+    <input type="dropdown" token="host" searchWhenChanged="true">
+      <label>Host</label>
+      <choice value="*">All</choice>
+      <initialValue>*</initialValue>
+      <fieldForLabel>host</fieldForLabel>
+      <fieldForValue>host</fieldForValue>
+      <search>
+        <query>index=* | stats count by host | sort host</query>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </search>
+    </input>
+    <input type="dropdown" token="result_filter">
+      <choice value=" ">All results</choice>
+      <choice value="`filter_ping_failures`">Only failures (packet loss or high response time)</choice>
+      <choice value="packet_loss &gt; 0">Only results with packet loss</choice>
+      <label>Result Filter</label>
+      <default></default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <table>
+        <search>
+          <query>sourcetype="ping_input" OR sourcetype=webpingi dest=$dest$ host=$host$ NOT host=$decideOnStartup
+| stats sparkline(avg(avg_ping)) as sparkline_ping avg(avg_ping) as ping max(max_ping) as max_ping latest(packet_loss) as packet_loss latest(_time) as last_checked range(avg_ping) as range min(avg_ping) as min by dest,host
+| search 
+| eval ping=round(ping, 0)." ms"
+| eval average=round(avg_ping, 0)." ms"
+| eval maximum=round(max_ping, 0)." ms"
+| eval range=round(min, 0)." - ".round(min+range, 0)." ms"
+| eval packet_loss=if(max_ping="NA",100,packet_loss)
+| table dest host packet_loss last_checked ping max_ping range sparkline_ping 
+| `timesince(last_checked,last_checked)`
+| sort -ping</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+        <option name="count">20</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <format field="sparkline_ping" type="sparkline">
+          <option name="type">bar</option>
+          <option name="height">20</option>
+          <option name="barColor">#65a637</option>
+          <option name="fillColor">#65a637</option>
+          <option name="lineColor">#65a637</option>
+          <option name="spotColor">#65a637</option>
+          <option name="colorMap">
+            <option name="800:1000">#f2b827</option>
+            <option name="1000:">#d6563c</option>
+          </option>
+        </format>
+        <drilldown>
+          <link>
+            <![CDATA[/app/network_tools/ping_status_history?form.dest=$row.dest$&earliest=$earliest$&latest=$latest$]]>
+          </link>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+</form>
