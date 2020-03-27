@@ -2,7 +2,7 @@
 Splunk Technical Add-on based on Python opening a URL and measure the performance
 
 ## Why WebPingi?
-Many providers from Cloud SAAS applications have disabled ICMP responses aka ping's. To identify availability and measure response times of any kind of webservice or website WebPingi was created. For example you can deploy WebPingi via a Splunk Heavy Forwarder to all your remote workers laptops to track and monitor their experience with your cloud services in use accross different regions. 
+Many providers from Cloud SAAS applications have disabled ICMP responses aka ping's. To identify availability and measure response times of any kind of webservice or website WebPingi was created. For example you can deploy WebPingi via a Splunk Heavy Forwarder to all your remote workers laptops to track and monitor  user experience with your cloud services in use accross different regions. 
 
 ## What is it doing?
 WebPingi allows you to query a webservice and get the DNS & PageLoad. 
