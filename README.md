@@ -27,6 +27,10 @@ Response:
 2. Configure inputs.conf - for every SAAS Service you want to monitor you create a copy and adjust the parameters of Name & URL. Via interval you can control how often it is queried.
 3. Save it and restart your Splunk Heavy Forwarder
 
+![Table Showing Response Times from an endpoint](https://github.com/matthias2maier/webpingi/blob/master/Screenshots/Screenshot_WebPingi_table.png?raw=true)
+
+![Timechard showing average, minimum and maximum response times binned to 3m per reporting endpoint](https://github.com/matthias2maier/webpingi/blob/master/Screenshots/Screenshot_WebPingi_timechart_avg_max_min.png?raw=true)
+
 ## Why only Splunk Heavy Forwarder and not the Splunk Universal Forwarder?
 The Splunk Universal Forwarder is lightwight and does not come with python. It's possible to [create wrapper script](https://sublimerobots.com/2017/01/simple-splunk-scripted-input-example/) so that within an Universal Forwarder the python script is executed with the machine's local python library which has to be installed. This was not yet tested. 
 
@@ -36,7 +40,7 @@ To align with the PING Logs the webpingi.py file allows you to change the output
 
 Dashboard adjustments should be easy with adding the sourcetype early on and splitting by host to display from which host the performance is measured from.
 
-![Status Overview with WebPingi](https://github.com/matthias2maier/webpingi/blob/master/WebPingi%20in%20Network%20Toolkit.png?raw=true)
+![Status Overview with WebPingi](https://github.com/matthias2maier/webpingi/blob/master/Screenshots/Screenshot%20WebPingi%20Network%20Toolkit-1.png?raw=true)
 
 Next up: 
 * Wrapper Script to run on Splunk Universal Forwarders
