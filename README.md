@@ -7,7 +7,7 @@ Many providers from Cloud SAAS applications have disabled ICMP responses aka pin
 ## What is it doing?
 WebPingi allows you to query a webservice and get the DNS & PageLoad. 
 Example Output:
-> Fri Mar 27 17:01:37 2020 Timing for Okta: http://splunk.okta.com, DNS: 0.0034 sec, LOAD: 1.2280 sec.
+> Fri Mar 27 18:00:28 2020 Timing for Service=Okta URL=http://******.okta.com, DNS=0.0019 LOAD=1.1158
 
 ## What does it use?
 WebPingi uses for DNS urllib and urllib2. The "gethostbyname" python functionality ist used for DNS response time and for the page load "urlopen" is used.
@@ -20,7 +20,7 @@ Example:
 >python webpingi.py SplunkAnswers https://answers.splunk.com
 
 Response:
-> Fri Mar 27 17:09:01 2020 Timing for SplunkAnswers: https://answers.splunk.com, DNS: 3.0613 sec, LOAD: 8.2720 sec.
+> Fri Mar 27 17:09:01 2020 Timing for Service=SplunkAnswers URL=https://answers.splunk.com, DNS=3.0613 LOAD=8.2720
 
 ## How can i use it with Splunk?
 1. Download the Git Repository and put it into /etc/apps/ of your Splunk Heavy Forwarder
