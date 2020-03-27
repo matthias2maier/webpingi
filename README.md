@@ -1,4 +1,4 @@
-# Webpingi
+# WebPingi
 Splunk Technical Add-on based on Python opening a URL and measure the performance
 
 ## Why WebPingi?
