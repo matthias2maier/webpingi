@@ -29,3 +29,7 @@ Response:
 
 ## Why only Splunk Heavy Forwarder and not the Splunk Universal Forwarder?
 The Splunk Universal Forwarder is lightwight and does not come with python. It's possible to [create wrapper script](https://sublimerobots.com/2017/01/simple-splunk-scripted-input-example/) so that within an Universal Forwarder the python script is executed with the machine's local python library which has to be installed. This was not yet tested. 
+
+## How can I map it into the Network Toolkit Splunk App?
+To align with the PING Logs the webpingi.py file allows you to change the output format. Go into the file before you copy it to the heavy forwarder and swap out the output where it is flagged in the comments. Output will then look like that:
+> Fri Mar 27 17:07:29 2020 sent=1 received=1 packet_loss=0 min_ping=4.683 avg_ping=4.683 max_ping=4.683 jitter=0.000 return_code=0 dest=https://answers.splunk.com DNSLoad=0.027
