@@ -28,4 +28,4 @@ Response:
 3. Save it and restart your Splunk Heavy Forwarder
 
 ## Why only Splunk Heavy Forwarder and not the Splunk Universal Forwarder?
-The Splunk Universal Forwarder is lightwight and does not come with python. It's possible to create wrapper script so that within an Universal Forwarder the python script is executed with the machine's local python library which has to be installed. This was not yet tested. 
+The Splunk Universal Forwarder is lightwight and does not come with python. It's possible to [create wrapper script][https://sublimerobots.com/2017/01/simple-splunk-scripted-input-example/] so that within an Universal Forwarder the python script is executed with the machine's local python library which has to be installed. This was not yet tested. 
