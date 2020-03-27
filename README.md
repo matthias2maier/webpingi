@@ -37,3 +37,7 @@ To align with the PING Logs the webpingi.py file allows you to change the output
 Dashboard adjustments should be easy with adding the sourcetype early on and splitting by host to display from which host the performance is measured from.
 
 ![Status Overview with WebPingi](https://github.com/matthias2maier/webpingi/blob/master/WebPingi%20in%20Network%20Toolkit.png?raw=true)
+
+Next up: 
+* Wrapper Script to run on Splunk Universal Forwarders
+* Implement a lookup table to for easier maintaining the set of URLs to query
